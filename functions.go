@@ -23,3 +23,6 @@ type SetupFunction func(context.Context, TestInfo) (interface{}, TearDownFunctio
 
 // A TearDownFunction is the type of function returned by a SetupFunction or SetupSuiteFunction.
 type TearDownFunction func()
+
+// Cleanup is a function type used for cleaning up.
+type Cleanup func() error
