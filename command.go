@@ -74,6 +74,10 @@ func NewCommand(
 			suites := filterSuites()
 
 			for _, suite := range suites {
+
+				// Store caller stash per suite
+				suite.stash = stash
+
 				err := newTestRunner(
 					viper.GetString("build-id"),
 					suite,

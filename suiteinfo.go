@@ -19,11 +19,8 @@ type suiteInfo struct {
 
 // SuiteInfo is the interface for the test writer
 type SuiteInfo interface {
+	// Register a test into a suite
 	RegisterTest(t Test)
-	// SetupInfo provides the user data
-	SetupInfo() interface{}
-	// Stash provides the callers data that may store configs/runtime they need
-	Stash() interface{}
 	// Write performs a write
 	Write(p []byte) (n int, err error)
 }
@@ -69,16 +66,6 @@ func (s *suiteInfo) RegisterTest(t Test) {
 	}
 
 	s.tests[t.Name] = t
-}
-
-// Stash provides the callers data that may store configs/runtime they need
-func (s *suiteInfo) Stash() interface{} {
-	return s.stash
-}
-
-// SetupInfo returns the eventual object stored by the Setup function.
-func (s *suiteInfo) SetupInfo() interface{} {
-	return s.data
 }
 
 // Write performs a write
