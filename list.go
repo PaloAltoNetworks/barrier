@@ -1,4 +1,4 @@
-package gotest
+package barrier
 
 func listTests(suites []*suiteInfo) error {
 

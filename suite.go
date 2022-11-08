@@ -1,4 +1,4 @@
-package gotest
+package barrier
 
 // Suite is a collection of tests
 type Suite struct {

@@ -1,4 +1,4 @@
-package gotest
+package barrier
 
 import (
 	"encoding/json"

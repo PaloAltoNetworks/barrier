@@ -1,4 +1,4 @@
-module github.com/PaloAltoNetworks/gotest
+module github.com/PaloAltoNetworks/barrier
 
 go 1.19
 
