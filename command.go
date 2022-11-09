@@ -15,7 +15,7 @@ func NewCommand(
 	name string,
 	description string,
 	version string,
-	stash interface{}, // data from caller thats stashed into SuiteInfo and TestInfo. Accessible using Stash()
+	stash GenerateStash,
 ) *cobra.Command {
 
 	cobra.OnInitialize(func() {
@@ -75,8 +75,10 @@ func NewCommand(
 
 			for _, suite := range suites {
 
-				// Store caller stash per suite
-				suite.stash = stash
+				if stash != nil {
+					// Store caller stash per suite
+					suite.stash = stash(ctx)
+				}
 
 				err := newTestRunner(
 					viper.GetString("build-id"),

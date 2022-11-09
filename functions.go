@@ -26,3 +26,6 @@ type TearDownFunction func()
 
 // Cleanup is a function type used for cleaning up.
 type Cleanup func() error
+
+// GenerateStash is a type of function that returns a generated stash.
+type GenerateStash func(context.Context) interface{}
