@@ -43,6 +43,9 @@ func init() {
 			// Demo: Use suite setup vars in test
 			suiteURL := t.SuiteSetupInfo().(string)
 
+			// Demo: Usage of stash
+			fmt.Println("stash is: " + t.Stash().(string))
+
 			barrier.Step(t, "perform a get on setup", func() error {
 				_, _ = http.Get(suiteURL) // make http call but ignore results
 				return nil
