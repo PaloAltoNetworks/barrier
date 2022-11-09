@@ -71,16 +71,17 @@ func NewCommand(
 			ctx, cancel := context.WithTimeout(context.Background(), viper.GetDuration("limit"))
 			defer cancel()
 
-			s := stash(ctx)
+			var s interface{}
+			if stash != nil {
+				s = stash(ctx)
+			}
 
 			suites := filterSuites()
 
 			for _, suite := range suites {
 
-				if stash != nil {
-					// Store caller stash per suite
-					suite.stash = s
-				}
+				// Store caller stash per suite
+				suite.stash = s
 
 				err := newTestRunner(
 					viper.GetString("build-id"),
