@@ -53,8 +53,9 @@ func NewCommand(
 		},
 	}
 
-	cmdListTests.Flags().StringSliceP("id", "i", nil, "Only run tests with the given identifier")
-	cmdListTests.Flags().StringSliceP("tag", "t", nil, "Only run tests with the given tags")
+	cmdListTests.Flags().BoolP("only-suites", "s", false, "Only list suites")
+	cmdListTests.Flags().StringSliceP("id", "i", nil, "Only list tests with the given identifier")
+	cmdListTests.Flags().StringSliceP("tag", "t", nil, "Only list tests with the given tags")
 
 	var cmdRunTests = &cobra.Command{
 		Use:           "test",
