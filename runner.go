@@ -85,6 +85,7 @@ func (r *testRunner) executeIteration(ctx context.Context, currTest testRun, res
 			var data interface{}
 			var td TearDownFunction
 			var err error
+			var start time.Time
 
 			buf := &bytes.Buffer{}
 
@@ -102,6 +103,7 @@ func (r *testRunner) executeIteration(ctx context.Context, currTest testRun, res
 
 				// recover remote code.
 				r := recover()
+				ti.duration = time.Since(start)
 				if r == nil {
 					return
 				}
@@ -144,9 +146,8 @@ func (r *testRunner) executeIteration(ctx context.Context, currTest testRun, res
 				}()
 			}
 
-			start := time.Now()
+			start = time.Now()
 			ti.err = t.test.Function(ctx, subTestInfo)
-			ti.duration = time.Since(start)
 
 		}(currTest, i)
 	}
