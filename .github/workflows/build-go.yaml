@@ -37,14 +37,14 @@ jobs:
           go install github.com/AlekSi/gocov-xml@latest
 
       - name: setup-for-older-go
-        if: ${{ matrix.go <= 1.17 }}
+        if: ${{ matrix.go <= 1.18 }}
         run: |
           # stay on an older version of golangci-lint which still builds against 1.17
           # This is due to the introduction of generics.
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.47.3
 
       - name: setup-for-newer-go
-        if: ${{ matrix.go > 1.17 }}
+        if: ${{ matrix.go > 1.18 }}
         run: |
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
