@@ -23,8 +23,9 @@ func printSetupError(id, suite, name string, recovery interface{}, err error) {
 	fmt.Printf("%s\n",
 		goterm.Bold(
 			goterm.Color(
-				fmt.Sprintf("%s FAIL %s",
+				fmt.Sprintf("%s: %s FAIL %s",
 					id,
+					suite,
 					name,
 				),
 				goterm.YELLOW,
