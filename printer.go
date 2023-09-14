@@ -14,7 +14,7 @@ import (
 
 var printLock = &sync.Mutex{}
 
-func printSetupError(id, suite, name string, recovery interface{}, err error) {
+func printSetupError(id, _, name string, recovery interface{}, err error) {
 
 	printLock.Lock()
 	defer printLock.Unlock()
@@ -74,7 +74,7 @@ func createHeader(currTest testRun, results []testResult, showOnSuccess bool) (f
 			goterm.GREEN,
 		)
 		currTest.testInfo.WriteHeader([]byte(output)) // nolint
-		return
+		return failed
 	}
 
 	color := goterm.GREEN
