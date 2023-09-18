@@ -16,10 +16,7 @@ lint:
 		--enable=ineffassign \
 		--enable=revive \
 		--enable=unused \
-		--enable=structcheck \
 		--enable=staticcheck \
-		--enable=varcheck \
-		--enable=deadcode \
 		--enable=unconvert \
 		--enable=misspell \
 		--enable=prealloc \
@@ -32,8 +29,8 @@ test:
 	@ echo "Converting the coverage file..."
 	gocov convert ./unit_coverage.cov | gocov-xml > ./coverage.xml
 integration:
-	go run examples/tests/main.go test 
-	go run examples/suites/main.go test 
+	go run examples/tests/main.go test
+	go run examples/suites/main.go test
 
 sec:
 	gosec -quiet ./...
