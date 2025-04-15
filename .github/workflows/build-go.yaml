@@ -32,7 +32,7 @@ jobs:
         run: |
           go version
           go install github.com/securego/gosec/cmd/gosec@latest
-          go install github.com/axw/gocov/gocov@master
+          go install github.com/axw/gocov/gocov@v1.1.0
           go install github.com/AlekSi/gocov-xml@latest
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.54.2
 
